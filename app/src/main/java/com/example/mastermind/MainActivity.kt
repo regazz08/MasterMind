@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                     punteggio++
                 }
             }
-
+            //punteggio
             txtRisultato.text = "Punteggio: $punteggio"
         }
     }
