@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#6dc0f7"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <!-- IMMAGINE -->
+
+    <!-- CONTENUTO CENTRALE -->
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="start"
+        android:contentDescription="Logo"
+        android:src="@drawable/mastermindcerchio" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- DOMANDA 1 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Quale città è la migliore d'Italia?"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <RadioGroup
+            android:id="@+id/gruppo1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/r1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Roma" />
+
+            <RadioButton
+                android:id="@+id/r2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Bergamo" />
+
+            <RadioButton
+                android:id="@+id/r3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Napoli" />
+
+            <RadioButton
+                android:id="@+id/r4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Palermo" />
+        </RadioGroup>
+
+        <!-- DOMANDA 2 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:text="Di che colore è il cielo?"
+            android:textColor="@color/black"
+
+            android:textSize="20sp" />
+
+        <RadioGroup
+            android:id="@+id/gruppo2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:textColor="@color/black"
+            >
+
+            <RadioButton
+                android:id="@+id/r5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rosso"
+                android:textColor="@color/black"
+                />
+
+            <RadioButton
+                android:id="@+id/r6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Azzurro"
+                android:textColor="@color/black"
+                />
+
+            <RadioButton
+                android:id="@+id/r7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Verde"
+                android:textColor="@color/black"
+                />
+
+            <RadioButton
+                android:id="@+id/r8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nero"
+                android:textColor="@color/black"
+                />
+        </RadioGroup>
+
+        <!-- BOTTONE -->
+        <Button
+            android:id="@+id/btnInvia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#FFD700"
+            android:text="Invia"
+            android:textColor="#000000"/>
+
+        <!-- RISULTATO -->
+        <TextView
+            android:id="@+id/txtRisultato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Punteggio: 0"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
