@@ -5,79 +5,89 @@ import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.Insets
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        enableEdgeToEdge()
-
         setContentView(R.layout.activity_main)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        // 1. VARIABILI LOCALI DI STATO (Niente "private var" fuori da qui)
+        var indiceDomandaAttuale = 0
+        var punteggio = 0
 
-            val systemBars: Insets =
-                insets.getInsets(WindowInsetsCompat.Type.systemBars())
+        // 2. CARICAMENTO DATI DA ARRAYS.XML
+        val domande = resources.getStringArray(R.array.lista_domande)
+        val risposteCorrette = resources.getStringArray(R.array.risposte_corrette)
 
-            v.setPadding(
-                systemBars.left,
-                systemBars.top,
-                systemBars.right,
-                systemBars.bottom
-            )
+        // Elenco degli ID delle risorse XML per le opzioni delle domande
+        val idOpzioniXML = arrayOf(
+            R.array.opzioni_d1,
+            R.array.opzioni_d2,
+            R.array.opzioni_d3
+        )
 
-            insets
+        // Riferimenti ai componenti grafici del layout XML
+        val txtDomanda = findViewById<TextView>(R.id.txtDomanda)
+        val gruppoRisposte = findViewById<RadioGroup>(R.id.gruppoRisposte)
+        val txtRisultato = findViewById<TextView>(R.id.txtRisultato)
+        val btnAvanti = findViewById<Button>(R.id.btnAvanti)
+        val btnInvia = findViewById<Button>(R.id.btnInvia)
+
+        // 3. MOSTRA LA PRIMA DOMANDA ALL'AVVIO
+        txtDomanda.text = domande[indiceDomandaAttuale]
+        var opzioniCorrenti = resources.getStringArray(idOpzioniXML[indiceDomandaAttuale])
+        findViewById<RadioButton>(R.id.D1R1).text = opzioniCorrenti[0]
+        findViewById<RadioButton>(R.id.D1R2).text = opzioniCorrenti[1]
+        findViewById<RadioButton>(R.id.D1R3).text = opzioniCorrenti[2]
+        findViewById<RadioButton>(R.id.D1R4).text = opzioniCorrenti[3]
+
+        // 4. LOGICA DEL TASTO AVANTI
+        btnAvanti.setOnClickListener {
+            // Controlla la risposta selezionata
+            val idSelezionato = gruppoRisposte.checkedRadioButtonId
+            if (idSelezionato != -1) {
+                val radioSelezionato = findViewById<RadioButton>(idSelezionato)
+                if (radioSelezionato.text.toString() == risposteCorrette[indiceDomandaAttuale]) {
+                    punteggio++
+                }
+            }
+
+            // Controlla se passare alla prossima domanda o bloccare il gioco
+            if (indiceDomandaAttuale < domande.size - 1) {
+                indiceDomandaAttuale++
+
+                // Aggiorna lo schermo con i nuovi testi della nuova domanda
+                txtDomanda.text = domande[indiceDomandaAttuale]
+                gruppoRisposte.clearCheck()
+                opzioniCorrenti = resources.getStringArray(idOpzioniXML[indiceDomandaAttuale])
+                findViewById<RadioButton>(R.id.D1R1).text = opzioniCorrenti[0]
+                findViewById<RadioButton>(R.id.D1R2).text = opzioniCorrenti[1]
+                findViewById<RadioButton>(R.id.D1R3).text = opzioniCorrenti[2]
+                findViewById<RadioButton>(R.id.D1R4).text = opzioniCorrenti[3]
+            } else {
+                txtDomanda.text = "Hai finito le domande! Premi INVIA per vedere il punteggio."
+                btnAvanti.isEnabled = false
+            }
         }
 
-        val gruppo1 = findViewById<RadioGroup>(R.id.gruppo1)
-        val gruppo2 = findViewById<RadioGroup>(R.id.gruppo2)
-
-        val btnInvia = findViewById<Button>(R.id.btnInvia)
-        val txtRisultato = findViewById<TextView>(R.id.txtRisultato)
-
-        // Risposte corrette
-        val rispostaCorretta1 = "Bergamo"
-        val rispostaCorretta2 = "Azzurro"
-
+        // 5. LOGICA DEL TASTO INVIA
         btnInvia.setOnClickListener {
-
-            var punteggio = 0
-
-            // DOMANDA 1
-            val idScelta1 = gruppo1.checkedRadioButtonId
-
-            if (idScelta1 != -1) {
-
-                val radio1 = findViewById<RadioButton>(idScelta1)
-
-                val testoRisposta1 = radio1.text.toString()
-
-                if (testoRisposta1 == rispostaCorretta1) {
-                    punteggio++
+            // Se l'utente clicca direttamente INVIA sull'ultima domanda senza premere prima AVANTI
+            if (btnAvanti.isEnabled) {
+                val idSelezionato = gruppoRisposte.checkedRadioButtonId
+                if (idSelezionato != -1) {
+                    val radioSelezionato = findViewById<RadioButton>(idSelezionato)
+                    if (radioSelezionato.text.toString() == risposteCorrette[indiceDomandaAttuale]) {
+                        punteggio++
+                    }
                 }
+                btnAvanti.isEnabled = false
             }
 
-            // DOMANDA 2
-            val idScelta2 = gruppo2.checkedRadioButtonId
-
-            if (idScelta2 != -1) {
-
-                val radio2 = findViewById<RadioButton>(idScelta2)
-
-                val testoRisposta2 = radio2.text.toString()
-
-                if (testoRisposta2 == rispostaCorretta2) {
-                    punteggio++
-                }
-            }
-
-            txtRisultato.text = "Punteggio: $punteggio"
+            // Mostra il risultato finale
+            txtRisultato.text = "Punteggio Finale: $punteggio / ${domande.size}"
         }
     }
 }

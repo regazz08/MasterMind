@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Array delle domande -->
+    <string-array name="lista_domande">
+        <item>Quale città è la migliore d\'Italia?</item>
+        <item>Di che colore è il cielo?</item>
+        <item>Qual è la capitale della Francia?</item>
+    </string-array>
+
+    <!-- Opzioni della Domanda 1 (Indice 0) -->
+    <string-array name="opzioni_d1">
+        <item>Roma</item>
+        <item>Bergamo</item>
+        <item>Napoli</item>
+        <item>Palermo</item>
+    </string-array>
+
+    <!-- Opzioni della Domanda 2 (Indice 1) -->
+    <string-array name="opzioni_d2">
+        <item>Rosso</item>
+        <item>Azzurro</item>
+        <item>Verde</item>
+        <item>Nero</item>
+    </string-array>
+
+    <!-- Opzioni della Domanda 3 (Indice 2) -->
+    <string-array name="opzioni_d3">
+        <item>Parigi</item>
+        <item>Lione</item>
+        <item>Marsiglia</item>
+        <item>Nizza</item>
+    </string-array>
+
+    <!-- Risposte corrette corrispondenti -->
+    <string-array name="risposte_corrette">
+        <item>Bergamo</item>
+        <item>Azzurro</item>
+        <item>Parigi</item>
+    </string-array>
+</resources>

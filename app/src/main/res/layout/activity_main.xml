@@ -28,17 +28,20 @@
         android:textSize="26sp"
         android:textStyle="bold" />
 
-    <!-- DOMANDA 1 -->
+    <!-- TESTO DOMANDA (Dinamico) -->
     <TextView
+        android:id="@+id/txtDomanda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="Quale città è la migliore d'Italia?"
+        android:layout_marginBottom="20dp"
+        android:text="Caricamento domanda..."
         android:textColor="@color/black"
-        android:textSize="18sp" />
+        android:textSize="20sp"
+        android:textAlignment="center"/>
 
+    <!-- UNICO GRUPPO RISPOSTE (Cambia i testi via codice) -->
     <RadioGroup
-        android:id="@+id/gruppo1"
+        android:id="@+id/gruppoRisposte"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp">
@@ -47,11 +50,11 @@
             android:id="@+id/D1R1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="8dp"
             android:background="#FFFFFF"
             android:button="@null"
             android:padding="15dp"
-            android:text="Roma"
+            android:text="Opzione 1"
             android:textAlignment="center"
             android:textColor="@color/black" />
 
@@ -59,11 +62,11 @@
             android:id="@+id/D1R2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="8dp"
             android:background="#FFFFFF"
             android:button="@null"
             android:padding="15dp"
-            android:text="Bergamo"
+            android:text="Opzione 2"
             android:textAlignment="center"
             android:textColor="@color/black" />
 
@@ -71,11 +74,11 @@
             android:id="@+id/D1R3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="8dp"
             android:background="#FFFFFF"
             android:button="@null"
             android:padding="15dp"
-            android:text="Napoli"
+            android:text="Opzione 3"
             android:textAlignment="center"
             android:textColor="@color/black" />
 
@@ -83,90 +86,45 @@
             android:id="@+id/D1R4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="8dp"
             android:background="#FFFFFF"
             android:button="@null"
             android:padding="15dp"
-            android:text="Palermo"
+            android:text="Opzione 4"
             android:textAlignment="center"
             android:textColor="@color/black" />
     </RadioGroup>
 
-    <!-- DOMANDA 2 -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="Di che colore è il cielo?"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
-
-    <RadioGroup
-        android:id="@+id/gruppo2"
+    <!-- PULSANTI DI CONTROLLO (In linea orizzontale) -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp">
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="10dp">
 
-        <RadioButton
-            android:id="@+id/D2R1"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btnAvanti"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:background="#FFFFFF"
-            android:button="@null"
-            android:padding="15dp"
-            android:text="Rosso"
-            android:textAlignment="center"
-            android:textColor="@color/black" />
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="#FFFFFF"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:text="AVANTI"
+            android:textColor="#000000"
+            android:textStyle="bold" />
 
-        <RadioButton
-            android:id="@+id/D2R2"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btnInvia"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:background="#FFFFFF"
-            android:button="@null"
-            android:padding="15dp"
-            android:text="Azzurro"
-            android:textAlignment="center"
-            android:textColor="@color/black" />
-
-        <RadioButton
-            android:id="@+id/D2R3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:background="#FFFFFF"
-            android:button="@null"
-            android:padding="15dp"
-            android:text="Verde"
-            android:textAlignment="center"
-            android:textColor="@color/black" />
-
-        <RadioButton
-            android:id="@+id/D2R4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:background="#FFFFFF"
-            android:button="@null"
-            android:padding="15dp"
-            android:text="Nero"
-            android:textAlignment="center"
-            android:textColor="@color/black" />
-    </RadioGroup>
-
-    <!-- BOTTONE INVIA -->
-    <Button
-        android:id="@+id/btnInvia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#FFD700"
-        android:paddingLeft="60dp"
-        android:paddingRight="60dp"
-        android:text="INVIA"
-        android:textColor="#000000"
-        android:textStyle="bold" />
+            android:backgroundTint="#FFD700"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:text="INVIA"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </LinearLayout>
